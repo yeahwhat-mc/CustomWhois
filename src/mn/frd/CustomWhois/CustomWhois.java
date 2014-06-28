@@ -1,16 +1,18 @@
 package mn.frd.CustomWhois;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.v1_7_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.earth2me.essentials.Essentials;
+import com.earth2me.essentials.User;
+
 import net.milkbowl.vault.economy.Economy;
-import net.minecraft.server.v1_7_R3.EntityPlayer;
 
 public class CustomWhois extends JavaPlugin implements Listener {
     public static Economy econ = null;
@@ -83,11 +85,20 @@ public class CustomWhois extends JavaPlugin implements Listener {
 				// Money
 				Double pmoney = econ.getBalance(p);
 				
+				// IP
+				String pip = p.getAddress().getHostName();
+				
 				// Gamemode
+				String pgamemode = p.getGameMode().toString();
+				
 				// God mode
+				Essentials essentials = (Essentials)Bukkit.getServer().getPluginManager().getPlugin("Essentials");
+				User user = essentials.getUser(p);
+				String pgodmode = String.valueOf(user.isGodModeEnabled());
+				
 				// OP
-				// Fly mode
-				// AFK
+				String pop = String.valueOf(p.isOp());
+				
 				// Jailed
 				// Muted
 				
@@ -102,6 +113,10 @@ public class CustomWhois extends JavaPlugin implements Listener {
 				sender.sendMessage(ChatColor.GOLD + "- Exp: " + ChatColor.RESET + pexp + " (Level " + pexplevel + ")");
 				sender.sendMessage(ChatColor.GOLD + "- Location: " + ChatColor.RESET + plocation);
 				sender.sendMessage(ChatColor.GOLD + "- Money: " + ChatColor.RESET + pmoney.doubleValue() + "$");
+				sender.sendMessage(ChatColor.GOLD + "- IP: " + ChatColor.RESET + pip);
+				sender.sendMessage(ChatColor.GOLD + "- Gamemode: " + ChatColor.RESET + pgamemode.toLowerCase());
+				sender.sendMessage(ChatColor.GOLD + "- God mode: " + ChatColor.RESET + pgodmode);
+				sender.sendMessage(ChatColor.GOLD + "- OP: " + ChatColor.RESET + pop);
 				return true;
 			} else {
 				// Abort, too many arguments
