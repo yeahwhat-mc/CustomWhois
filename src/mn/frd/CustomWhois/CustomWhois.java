@@ -3,23 +3,36 @@ package mn.frd.CustomWhois;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.craftbukkit.v1_7_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import net.milkbowl.vault.economy.Economy;
+import net.minecraft.server.v1_7_R3.EntityPlayer;
+
 public class CustomWhois extends JavaPlugin implements Listener {
+    public static Economy econ = null;
+
 	@Override
 	public void onEnable(){
+		  if (!setupEconomy() ) {
+            getLogger().severe(String.format("[%s] - Disabled due to no Vault dependency found!", getDescription().getName()));
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
+		
 		// Register events
-		this.getServer().getPluginManager().registerEvents(this, this);
+		getServer().getPluginManager().registerEvents(this, this);
 		// Log loading
-		this.getLogger().info("Loaded " + this.getDescription().getName() + " v" + this.getDescription().getVersion());	
+		getLogger().info("Loaded " + getDescription().getName() + " v" + getDescription().getVersion());		
 	}
 
 	@Override
 	public void onDisable(){
 		// Log disabling
-		this.getLogger().info("Disabled " + this.getDescription().getName() + " v" + this.getDescription().getVersion());	
+		getLogger().info("Disabled " + getDescription().getName() + " v" + getDescription().getVersion());	
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -68,7 +81,8 @@ public class CustomWhois extends JavaPlugin implements Listener {
 				String plocation = plocworld + " (" + plocx + " " + plocy + " " + plocz + ")";
 				
 				// Money
-				// IP
+				Double pmoney = econ.getBalance(p);
+				
 				// Gamemode
 				// God mode
 				// OP
@@ -87,6 +101,7 @@ public class CustomWhois extends JavaPlugin implements Listener {
 				sender.sendMessage(ChatColor.GOLD + "- Hunger: " + ChatColor.RESET + phunger.intValue() + "/" + pmaxhunger.intValue() + " (+" + psaturation.intValue() + ")");
 				sender.sendMessage(ChatColor.GOLD + "- Exp: " + ChatColor.RESET + pexp + " (Level " + pexplevel + ")");
 				sender.sendMessage(ChatColor.GOLD + "- Location: " + ChatColor.RESET + plocation);
+				sender.sendMessage(ChatColor.GOLD + "- Money: " + ChatColor.RESET + pmoney.doubleValue() + "$");
 				return true;
 			} else {
 				// Abort, too many arguments
@@ -96,4 +111,16 @@ public class CustomWhois extends JavaPlugin implements Listener {
 		}
 		return false;
 	}
+	
+	private boolean setupEconomy() {
+        if (getServer().getPluginManager().getPlugin("Vault") == null) {
+            return false;
+        }
+        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+        if (rsp == null) {
+            return false;
+        }
+        econ = rsp.getProvider();
+        return econ != null;
+    }
 }
