@@ -146,7 +146,9 @@ public class CustomWhois extends JavaPlugin implements Listener {
 					sender.sendMessage(ChatColor.GOLD + "- Hunger: " + ChatColor.RESET + phunger.intValue() + "/" + pmaxhunger.intValue() + " (+" + psaturation.intValue() + ")");
 				}
 				if ((sender.hasPermission("customwhois.custom.exp")) && !(sender.hasPermission("customwhois.deny."+ plocworld +".exp"))){
-					sender.sendMessage(ChatColor.GOLD + "- Exp: " + ChatColor.RESET + pexp + " (Level " + pexplevel + ")");
+					if(plocworld != "war_survival_pvp_1-7_15-12-2013" && plocworld != "war_nether_pvp_1-7_15-12-2013" && plocworld != "war_end_pvp_1-7_15-12-2013"){
+						sender.sendMessage(ChatColor.GOLD + "- Exp: " + ChatColor.RESET + pexp + " (Level " + pexplevel + ")");
+					}
 				}
 				if ((sender.hasPermission("customwhois.custom.location")) && !(sender.hasPermission("customwhois.deny."+ plocworld +".location"))){
 					sender.sendMessage(ChatColor.GOLD + "- Location: " + ChatColor.RESET + plocation);
