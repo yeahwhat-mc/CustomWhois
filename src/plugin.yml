@@ -7,7 +7,7 @@ commands:
     description: Display informations about a specific player
     usage: /<command>
 permissions:
-  whois.self:
+  customwhois.whois.self:
     default: true
-  whois.others:
+  customwhois.whois.others:
     default: op

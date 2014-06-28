@@ -52,6 +52,21 @@ public class CustomWhois extends JavaPlugin implements Listener {
 				// Proceed, one argument found
 				Player p = getServer().getPlayer(args[0]);
 				
+				// Check if command sender matching the argument 
+				if (sender.getName() == p.getName()){
+					// If sender has not permission "customwhois.whois.self"
+					if (!sender.hasPermission("customwhois.whois.self")){
+						sender.sendMessage(prefix + " " +  "You dont have the permission: " + ChatColor.GRAY + "- customwhois.whois.self");
+						return true;
+					}	
+				} else {
+					// If sender has not permission "customwhois.whois.others"
+					if (!sender.hasPermission("customwhois.whois.others")){
+						sender.sendMessage(prefix + " " +  "You dont have the permission: " + ChatColor.GRAY + "- customwhois.whois.others");
+						return true;
+					}
+				}
+			
 				/* 
 				 * Gather informations
 				 */
