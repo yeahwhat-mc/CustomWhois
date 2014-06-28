@@ -1,0 +1,13 @@
+name: CustomWhois
+main: mn.frd.CustomWhois.CustomWhois
+version: 1.0
+
+commands: 
+  whois:
+    description: Display informations about a specific player
+    usage: /<command>
+permissions:
+  whois.self:
+    default: true
+  whois.others:
+    default: op
