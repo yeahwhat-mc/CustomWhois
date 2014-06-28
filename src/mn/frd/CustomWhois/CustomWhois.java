@@ -131,20 +131,50 @@ public class CustomWhois extends JavaPlugin implements Listener {
 				 */
 				
 				sender.sendMessage(ChatColor.GOLD + "====== Whois: " + ChatColor.RED + pign + ChatColor.GOLD + " ======");
-				sender.sendMessage(ChatColor.GOLD + "- Nick: " + ChatColor.RESET + pnick);
-				sender.sendMessage(ChatColor.GOLD + "- Health: " + ChatColor.RESET + phealth.intValue() + "/" + pmaxhealth.intValue());
-				sender.sendMessage(ChatColor.GOLD + "- Hunger: " + ChatColor.RESET + phunger.intValue() + "/" + pmaxhunger.intValue() + " (+" + psaturation.intValue() + ")");
-				sender.sendMessage(ChatColor.GOLD + "- Exp: " + ChatColor.RESET + pexp + " (Level " + pexplevel + ")");
-				sender.sendMessage(ChatColor.GOLD + "- Location: " + ChatColor.RESET + plocation);
-				sender.sendMessage(ChatColor.GOLD + "- Money: " + ChatColor.RESET + pmoney.doubleValue() + "$");
-				sender.sendMessage(ChatColor.GOLD + "- IP: " + ChatColor.RESET + pip);
-				sender.sendMessage(ChatColor.GOLD + "- Gamemode: " + ChatColor.RESET + pgamemode.toLowerCase());
-				sender.sendMessage(ChatColor.GOLD + "- God mode: " + ChatColor.RESET + colorizeBool(pgodmode));
-				sender.sendMessage(ChatColor.GOLD + "- OP: " + ChatColor.RESET + colorizeBool(pop));
-				sender.sendMessage(ChatColor.GOLD + "- Flying: " + ChatColor.RESET + colorizeBool(pfly));
-				sender.sendMessage(ChatColor.GOLD + "- AFK: " + ChatColor.RESET + colorizeBool(pafk));
-				sender.sendMessage(ChatColor.GOLD + "- Jailed: " + ChatColor.RESET + colorizeBool(pjailed));
-				sender.sendMessage(ChatColor.GOLD + "- Muted: " + ChatColor.RESET + colorizeBool(pmuted));
+				
+				if (sender.hasPermission("customwhois.custom.nick")){
+					sender.sendMessage(ChatColor.GOLD + "- Nick: " + ChatColor.RESET + pnick);					
+				}
+				if (sender.hasPermission("customwhois.custom.health")){
+					sender.sendMessage(ChatColor.GOLD + "- Health: " + ChatColor.RESET + phealth.intValue() + "/" + pmaxhealth.intValue());
+				}
+				if (sender.hasPermission("customwhois.custom.hunger")){
+					sender.sendMessage(ChatColor.GOLD + "- Hunger: " + ChatColor.RESET + phunger.intValue() + "/" + pmaxhunger.intValue() + " (+" + psaturation.intValue() + ")");
+				}
+				if (sender.hasPermission("customwhois.custom.exp")){
+					sender.sendMessage(ChatColor.GOLD + "- Exp: " + ChatColor.RESET + pexp + " (Level " + pexplevel + ")");
+				}
+				if (sender.hasPermission("customwhois.custom.location")){
+					sender.sendMessage(ChatColor.GOLD + "- Location: " + ChatColor.RESET + plocation);
+				}
+				if (sender.hasPermission("customwhois.custom.money")){
+					sender.sendMessage(ChatColor.GOLD + "- Money: " + ChatColor.RESET + pmoney.doubleValue() + "$");
+				}
+				if (sender.hasPermission("customwhois.custom.ip")){
+					sender.sendMessage(ChatColor.GOLD + "- IP: " + ChatColor.RESET + pip);
+				}
+				if (sender.hasPermission("customwhois.custom.gamemode")){
+					sender.sendMessage(ChatColor.GOLD + "- Gamemode: " + ChatColor.RESET + pgamemode.toLowerCase());
+				}
+				if (sender.hasPermission("customwhois.custom.godmode")){
+					sender.sendMessage(ChatColor.GOLD + "- God mode: " + ChatColor.RESET + colorizeBool(pgodmode));
+				}
+				if (sender.hasPermission("customwhois.custom.op")){
+					sender.sendMessage(ChatColor.GOLD + "- OP: " + ChatColor.RESET + colorizeBool(pop));
+				}
+				if (sender.hasPermission("customwhois.custom.flying")){
+					sender.sendMessage(ChatColor.GOLD + "- Flying: " + ChatColor.RESET + colorizeBool(pfly));
+				}
+				if (sender.hasPermission("customwhois.custom.afk")){
+					sender.sendMessage(ChatColor.GOLD + "- AFK: " + ChatColor.RESET + colorizeBool(pafk));
+				}
+				if (sender.hasPermission("customwhois.custom.jailed")){
+					sender.sendMessage(ChatColor.GOLD + "- Jailed: " + ChatColor.RESET + colorizeBool(pjailed));
+				}				
+				if (sender.hasPermission("customwhois.custom.muted")){
+					sender.sendMessage(ChatColor.GOLD + "- Muted: " + ChatColor.RESET + colorizeBool(pmuted));
+				}
+				
 				return true;
 			} else {
 				// Abort, too many arguments

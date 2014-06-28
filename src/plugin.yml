@@ -11,3 +11,31 @@ permissions:
     default: true
   customwhois.whois.others:
     default: op
+  customwhois.custom.nick:
+    default: true
+  customwhois.custom.health:
+    default: true
+  customwhois.custom.hunger:
+    default: true
+  customwhois.custom.exp:
+    default: true
+  customwhois.custom.location:
+    default: true
+  customwhois.custom.money:
+    default: true
+  customwhois.custom.ip:
+    default: true
+  customwhois.custom.gamemode:
+    default: true
+  customwhois.custom.godmode:
+    default: true
+  customwhois.custom.op:
+    default: true
+  customwhois.custom.flying:
+    default: true
+  customwhois.custom.afk:
+    default: true
+  customwhois.custom.jailed:
+    default: true
+  customwhois.custom.muted:
+    default: true
