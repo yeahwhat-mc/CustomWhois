@@ -99,8 +99,17 @@ public class CustomWhois extends JavaPlugin implements Listener {
 				// OP
 				String pop = String.valueOf(p.isOp());
 				
+				// Fly mode
+				String pfly = String.valueOf(p.isFlying());
+				
+				// AFK
+				String pafk = String.valueOf(user.isAfk());
+				
 				// Jailed
+				String pjailed = String.valueOf(user.isJailed());
+
 				// Muted
+				String pmuted = String.valueOf(user.isMuted());
 				
 				/*
 				 * Return actual whois message
@@ -117,6 +126,10 @@ public class CustomWhois extends JavaPlugin implements Listener {
 				sender.sendMessage(ChatColor.GOLD + "- Gamemode: " + ChatColor.RESET + pgamemode.toLowerCase());
 				sender.sendMessage(ChatColor.GOLD + "- God mode: " + ChatColor.RESET + pgodmode);
 				sender.sendMessage(ChatColor.GOLD + "- OP: " + ChatColor.RESET + pop);
+				sender.sendMessage(ChatColor.GOLD + "- Flying: " + ChatColor.RESET + pfly);
+				sender.sendMessage(ChatColor.GOLD + "- AFK: " + ChatColor.RESET + pafk);
+				sender.sendMessage(ChatColor.GOLD + "- Jailed: " + ChatColor.RESET + pjailed);
+				sender.sendMessage(ChatColor.GOLD + "- Muted: " + ChatColor.RESET + pmuted);
 				return true;
 			} else {
 				// Abort, too many arguments
