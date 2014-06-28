@@ -139,12 +139,12 @@ public class CustomWhois extends JavaPlugin implements Listener {
 				sender.sendMessage(ChatColor.GOLD + "- Money: " + ChatColor.RESET + pmoney.doubleValue() + "$");
 				sender.sendMessage(ChatColor.GOLD + "- IP: " + ChatColor.RESET + pip);
 				sender.sendMessage(ChatColor.GOLD + "- Gamemode: " + ChatColor.RESET + pgamemode.toLowerCase());
-				sender.sendMessage(ChatColor.GOLD + "- God mode: " + ChatColor.RESET + pgodmode);
-				sender.sendMessage(ChatColor.GOLD + "- OP: " + ChatColor.RESET + pop);
-				sender.sendMessage(ChatColor.GOLD + "- Flying: " + ChatColor.RESET + pfly);
-				sender.sendMessage(ChatColor.GOLD + "- AFK: " + ChatColor.RESET + pafk);
-				sender.sendMessage(ChatColor.GOLD + "- Jailed: " + ChatColor.RESET + pjailed);
-				sender.sendMessage(ChatColor.GOLD + "- Muted: " + ChatColor.RESET + pmuted);
+				sender.sendMessage(ChatColor.GOLD + "- God mode: " + ChatColor.RESET + colorizeBool(pgodmode));
+				sender.sendMessage(ChatColor.GOLD + "- OP: " + ChatColor.RESET + colorizeBool(pop));
+				sender.sendMessage(ChatColor.GOLD + "- Flying: " + ChatColor.RESET + colorizeBool(pfly));
+				sender.sendMessage(ChatColor.GOLD + "- AFK: " + ChatColor.RESET + colorizeBool(pafk));
+				sender.sendMessage(ChatColor.GOLD + "- Jailed: " + ChatColor.RESET + colorizeBool(pjailed));
+				sender.sendMessage(ChatColor.GOLD + "- Muted: " + ChatColor.RESET + colorizeBool(pmuted));
 				return true;
 			} else {
 				// Abort, too many arguments
@@ -166,4 +166,14 @@ public class CustomWhois extends JavaPlugin implements Listener {
         econ = rsp.getProvider();
         return econ != null;
     }
+	
+	public String colorizeBool(String bool) { 
+		if (bool == "true"){
+			String stringbool = ChatColor.GREEN + "true" + ChatColor.RESET;
+			return stringbool;
+		} else {
+			String stringbool = ChatColor.RED + "false" + ChatColor.RESET;
+			return stringbool;
+		}
+	}
 }
