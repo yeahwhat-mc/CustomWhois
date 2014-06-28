@@ -37,3 +37,7 @@ Permission | Purpose | Default
 ## Version
 
 1.1
+
+## License
+
+[WTFPL](LICENSE)
