@@ -23,7 +23,7 @@ Permission | Purpose | Default
 `customwhois.custom.afk` | Display the AFK element | _none_
 `customwhois.custom.jailed` | Display the jail element | _none_
 `customwhois.custom.muted` | Display the mute element | _none_
-`customwhois.custom.<world>.<element>` | Display the output of `<element>` element of a player in world `<world>` | _none_
+`customwhois.custom.<element>.<world>` | Display the output of `<element>` element of a player in world `<world>` | _none_
 
 ## Screenshots
 
