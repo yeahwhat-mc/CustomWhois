@@ -1,6 +1,6 @@
 name: CustomWhois
 main: mn.frd.CustomWhois.CustomWhois
-version: 1.1
+version: 1.2
 
 commands: 
   whois:
@@ -12,30 +12,30 @@ permissions:
   customwhois.whois.others:
     default: op
   customwhois.custom.nick:
-    default: true
+    default: false
   customwhois.custom.health:
-    default: true
+    default: false
   customwhois.custom.hunger:
-    default: true
+    default: false
   customwhois.custom.exp:
-    default: true
+    default: false
   customwhois.custom.location:
-    default: true
+    default: false
   customwhois.custom.money:
-    default: true
+    default: false
   customwhois.custom.ip:
-    default: true
+    default: false
   customwhois.custom.gamemode:
-    default: true
+    default: false
   customwhois.custom.godmode:
-    default: true
+    default: false
   customwhois.custom.op:
-    default: true
+    default: false
   customwhois.custom.flying:
-    default: true
+    default: false
   customwhois.custom.afk:
-    default: true
+    default: false
   customwhois.custom.jailed:
-    default: true
+    default: false
   customwhois.custom.muted:
-    default: true
+    default: false
