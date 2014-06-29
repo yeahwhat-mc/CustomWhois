@@ -9,21 +9,21 @@ Permission | Purpose | Default
 --- | --- | ---
 `customwhois.whois.self` | Whois yourself using `/whois <yourplayername>` | true
 `customwhois.whois.others` | Whois another players using `/ping <player>` | ops
-`customwhois.custom.nick` | Display the nick `/whois` output element | true
-`customwhois.custom.health` | Display the health element | true
-`customwhois.custom.hunger` | Display the hunger element | true
-`customwhois.custom.exp` | Display the exp element | true
-`customwhois.custom.location` | Display the location element | true
-`customwhois.custom.money` | Display the money element | true
-`customwhois.custom.ip` | Display the IP element | true
-`customwhois.custom.gamemode` | Display the gamemode element | true
-`customwhois.custom.godmode` | Display the god mode element | true
-`customwhois.custom.op` | Display the OP element | true
-`customwhois.custom.flying` | Display the fly element | true
-`customwhois.custom.afk` | Display the AFK element | true
-`customwhois.custom.jailed` | Display the jail element | true
-`customwhois.custom.muted` | Display the mute element | true
-`customwhois.deny.<world>.<element>` | Disable the output of `<element>` element of a player in world `<world>` | _none_
+`customwhois.custom.nick` | Display the nick `/whois` output element | _none_
+`customwhois.custom.health` | Display the health element | _none_
+`customwhois.custom.hunger` | Display the hunger element | _none_
+`customwhois.custom.exp` | Display the exp element | _none_
+`customwhois.custom.location` | Display the location element | _none_
+`customwhois.custom.money` | Display the money element | _none_
+`customwhois.custom.ip` | Display the IP element | _none_
+`customwhois.custom.gamemode` | Display the gamemode element | _none_
+`customwhois.custom.godmode` | Display the god mode element | _none_
+`customwhois.custom.op` | Display the OP element | _none_
+`customwhois.custom.flying` | Display the fly element | _none_
+`customwhois.custom.afk` | Display the AFK element | _none_
+`customwhois.custom.jailed` | Display the jail element | _none_
+`customwhois.custom.muted` | Display the mute element | _none_
+`customwhois.custom.<world>.<element>` | Display the output of `<element>` element of a player in world `<world>` | _none_
 
 ## Screenshots
 
@@ -36,7 +36,7 @@ Permission | Purpose | Default
 
 ## Version
 
-1.1
+1.2
 
 ## License
 
