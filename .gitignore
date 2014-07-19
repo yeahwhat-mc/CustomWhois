@@ -1,5 +1,7 @@
+.DS_Store
 .project
 .settings
 dst
 lib
-/bin/
+bin
+target
