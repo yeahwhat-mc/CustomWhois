@@ -35,7 +35,7 @@ Permission | Purpose | Default
 
 ## Version
 
-1.2
+1.2.1
 
 ## License
 

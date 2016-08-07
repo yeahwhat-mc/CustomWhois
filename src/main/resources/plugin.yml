@@ -1,8 +1,8 @@
 name: CustomWhois
 main: mn.frd.CustomWhois.CustomWhois
-version: 1.2
+version: 1.2.1
 
-commands: 
+commands:
   whois:
     description: Display informations about a specific player
     usage: /<command>
