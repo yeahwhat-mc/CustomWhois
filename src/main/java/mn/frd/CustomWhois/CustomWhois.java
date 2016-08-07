@@ -136,46 +136,46 @@ public class CustomWhois extends JavaPlugin implements Listener {
 
 				sender.sendMessage(ChatColor.GOLD + "====== Whois: " + ChatColor.RED + pign + ChatColor.GOLD + " ======");
 
-				if ((sender.hasPermission("customwhois.custom.nick")) && (sender.hasPermission("customwhois.custom.nick." + plocworld))){
+				if (sender.hasPermission("customwhois.custom.nick")){
 					sender.sendMessage(ChatColor.GOLD + "- Nick: " + ChatColor.RESET + pnick);
 				}
-				if ((sender.hasPermission("customwhois.custom.health")) && (sender.hasPermission("customwhois.custom.health." + plocworld))){
+				if (sender.hasPermission("customwhois.custom.health")){
 					sender.sendMessage(ChatColor.GOLD + "- Health: " + ChatColor.RESET + phealth.intValue() + "/" + pmaxhealth.intValue());
 				}
-				if ((sender.hasPermission("customwhois.custom.hunger")) && (sender.hasPermission("customwhois.custom.hunger." + plocworld))){
+				if (sender.hasPermission("customwhois.custom.hunger")){
 					sender.sendMessage(ChatColor.GOLD + "- Hunger: " + ChatColor.RESET + phunger.intValue() + "/" + pmaxhunger.intValue() + " (+" + psaturation.intValue() + ")");
 				}
-				if ((sender.hasPermission("customwhois.custom.exp")) && (sender.hasPermission("customwhois.custom.exp." + plocworld))){
+				if (sender.hasPermission("customwhois.custom.exp")){
 					sender.sendMessage(ChatColor.GOLD + "- Exp: " + ChatColor.RESET + pexp + " (Level " + pexplevel + ")");
 				}
-				if ((sender.hasPermission("customwhois.custom.location")) && (sender.hasPermission("customwhois.custom.location." + plocworld))){
+				if (sender.hasPermission("customwhois.custom.location")){
 					sender.sendMessage(ChatColor.GOLD + "- Location: " + ChatColor.RESET + plocation);
 				}
-				if ((sender.hasPermission("customwhois.custom.money")) && (sender.hasPermission("customwhois.custom.money." + plocworld))){
+				if (sender.hasPermission("customwhois.custom.money")){
 					sender.sendMessage(ChatColor.GOLD + "- Money: " + ChatColor.RESET + pmoney.doubleValue() + "$");
 				}
-				if ((sender.hasPermission("customwhois.custom.ip")) && (sender.hasPermission("customwhois.custom.ip." + plocworld))){
+				if (sender.hasPermission("customwhois.custom.ip")){
 					sender.sendMessage(ChatColor.GOLD + "- IP: " + ChatColor.RESET + pip);
 				}
-				if ((sender.hasPermission("customwhois.custom.gamemode")) && (sender.hasPermission("customwhois.custom.gamemode." + plocworld))){
+				if (sender.hasPermission("customwhois.custom.gamemode")){
 					sender.sendMessage(ChatColor.GOLD + "- Gamemode: " + ChatColor.RESET + pgamemode.toLowerCase());
 				}
-				if ((sender.hasPermission("customwhois.custom.godmode")) && (sender.hasPermission("customwhois.custom.godmode." + plocworld))){
+				if (sender.hasPermission("customwhois.custom.godmode")){
 					sender.sendMessage(ChatColor.GOLD + "- God mode: " + ChatColor.RESET + colorizeBool(pgodmode));
 				}
-				if ((sender.hasPermission("customwhois.custom.op")) && (sender.hasPermission("customwhois.custom.op." + plocworld))){
+				if (sender.hasPermission("customwhois.custom.op")){
 					sender.sendMessage(ChatColor.GOLD + "- OP: " + ChatColor.RESET + colorizeBool(pop));
 				}
-				if ((sender.hasPermission("customwhois.custom.flying")) && (sender.hasPermission("customwhois.custom.flying." + plocworld))){
+				if (sender.hasPermission("customwhois.custom.flying")){
 					sender.sendMessage(ChatColor.GOLD + "- Flying: " + ChatColor.RESET + colorizeBool(pfly));
 				}
-				if ((sender.hasPermission("customwhois.custom.afk")) && (sender.hasPermission("customwhois.custom.afk." + plocworld))){
+				if (sender.hasPermission("customwhois.custom.afk")){
 					sender.sendMessage(ChatColor.GOLD + "- AFK: " + ChatColor.RESET + colorizeBool(pafk));
 				}
-				if ((sender.hasPermission("customwhois.custom.jailed")) && (sender.hasPermission("customwhois.custom.jailed." + plocworld))){
+				if (sender.hasPermission("customwhois.custom.jailed")){
 					sender.sendMessage(ChatColor.GOLD + "- Jailed: " + ChatColor.RESET + colorizeBool(pjailed));
 				}
-				if ((sender.hasPermission("customwhois.custom.muted")) && (sender.hasPermission("customwhois.custom.muted." + plocworld))){
+				if (sender.hasPermission("customwhois.custom.muted")){
 					sender.sendMessage(ChatColor.GOLD + "- Muted: " + ChatColor.RESET + colorizeBool(pmuted));
 				}
 
