@@ -15,34 +15,34 @@ import com.earth2me.essentials.User;
 import net.milkbowl.vault.economy.Economy;
 
 public class CustomWhois extends JavaPlugin implements Listener {
-    public static Economy econ = null;
+	public static Economy econ = null;
 
 	@Override
 	public void onEnable(){
-		  if (!setupEconomy() ) {
-            getLogger().severe(String.format("[%s] - Disabled due to no Vault dependency found!", getDescription().getName()));
-            getServer().getPluginManager().disablePlugin(this);
-            return;
-        }
-		
+		if (!setupEconomy() ) {
+			getLogger().severe(String.format("[%s] - Disabled due to no Vault dependency found!", getDescription().getName()));
+			getServer().getPluginManager().disablePlugin(this);
+			return;
+		}
+
 		// Register events
 		getServer().getPluginManager().registerEvents(this, this);
 		// Log loading
-		getLogger().info("Loaded " + getDescription().getName() + " v" + getDescription().getVersion());		
+		getLogger().info("Loaded " + getDescription().getName() + " v" + getDescription().getVersion());
 	}
 
 	@Override
 	public void onDisable(){
 		// Log disabling
-		getLogger().info("Disabled " + getDescription().getName() + " v" + getDescription().getVersion());	
+		getLogger().info("Disabled " + getDescription().getName() + " v" + getDescription().getVersion());
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 		if (cmd.getName().equalsIgnoreCase("whois")){
 			// Define prefix
 			String prefix = ChatColor.RED + "[Whois]" + ChatColor.RESET;
-			
+
 			// Check arguments
 			if(args.length == 0) {
 				// Abort, no arguments
@@ -55,14 +55,14 @@ public class CustomWhois extends JavaPlugin implements Listener {
 					sender.sendMessage(prefix + " " +  "Couldn't find online player " + ChatColor.GRAY + args[0] + ChatColor.RESET + "!");
 					return true;
 				}
-				
-				// Check if command sender matching the argument 
+
+				// Check if command sender matching the argument
 				if (sender.getName() == p.getName()){
 					// If sender has not permission "customwhois.whois.self"
 					if (!sender.hasPermission("customwhois.whois.self")){
 						sender.sendMessage(prefix + " " +  "You dont have the permission: " + ChatColor.GRAY + "customwhois.whois.self");
 						return true;
-					}	
+					}
 				} else {
 					// If sender has not permission "customwhois.whois.others"
 					if (!sender.hasPermission("customwhois.whois.others")){
@@ -70,14 +70,14 @@ public class CustomWhois extends JavaPlugin implements Listener {
 						return true;
 					}
 				}
-			
-				/* 
+
+				/*
 				 * Gather informations
 				 */
-				
+
 				// Real IGN
 				String pign = p.getName();
-				
+
 				// Nickname
 				String pnick = p.getDisplayName();
 
@@ -89,55 +89,55 @@ public class CustomWhois extends JavaPlugin implements Listener {
 				Integer pmaxhunger = 20;
 				Float phunger = pmaxhunger - p.getExhaustion();
 				Float psaturation = p.getSaturation();
-				
+
 				// Exp
 				Integer pexp = p.getTotalExperience();
 				Integer pexplevel = p.getLevel();
-				
+
 				// Location
 				String plocworld = p.getLocation().getWorld().getName();
 				Double plocx = p.getLocation().getX();
 				Double plocy = p.getLocation().getY();
 				Double plocz = p.getLocation().getZ();
 				String plocation = plocworld + " (" + plocx + " " + plocy + " " + plocz + ")";
-				
+
 				// Money
 				Double pmoney = econ.getBalance(p);
-				
+
 				// IP
 				String pip = p.getAddress().getHostName();
-				
+
 				// Gamemode
 				String pgamemode = p.getGameMode().toString();
-				
+
 				// God mode
 				Essentials essentials = (Essentials)Bukkit.getServer().getPluginManager().getPlugin("Essentials");
 				User user = essentials.getUser(p);
 				String pgodmode = String.valueOf(user.isGodModeEnabled());
-				
+
 				// OP
 				String pop = String.valueOf(p.isOp());
-				
+
 				// Fly mode
 				String pfly = String.valueOf(p.isFlying());
-				
+
 				// AFK
 				String pafk = String.valueOf(user.isAfk());
-				
+
 				// Jailed
 				String pjailed = String.valueOf(user.isJailed());
 
 				// Muted
 				String pmuted = String.valueOf(user.isMuted());
-				
+
 				/*
 				 * Return actual whois message
 				 */
-				
+
 				sender.sendMessage(ChatColor.GOLD + "====== Whois: " + ChatColor.RED + pign + ChatColor.GOLD + " ======");
-				
+
 				if ((sender.hasPermission("customwhois.custom.nick")) && (sender.hasPermission("customwhois.custom.nick." + plocworld))){
-					sender.sendMessage(ChatColor.GOLD + "- Nick: " + ChatColor.RESET + pnick);					
+					sender.sendMessage(ChatColor.GOLD + "- Nick: " + ChatColor.RESET + pnick);
 				}
 				if ((sender.hasPermission("customwhois.custom.health")) && (sender.hasPermission("customwhois.custom.health." + plocworld))){
 					sender.sendMessage(ChatColor.GOLD + "- Health: " + ChatColor.RESET + phealth.intValue() + "/" + pmaxhealth.intValue());
@@ -174,11 +174,11 @@ public class CustomWhois extends JavaPlugin implements Listener {
 				}
 				if ((sender.hasPermission("customwhois.custom.jailed")) && (sender.hasPermission("customwhois.custom.jailed." + plocworld))){
 					sender.sendMessage(ChatColor.GOLD + "- Jailed: " + ChatColor.RESET + colorizeBool(pjailed));
-				}				
+				}
 				if ((sender.hasPermission("customwhois.custom.muted")) && (sender.hasPermission("customwhois.custom.muted." + plocworld))){
 					sender.sendMessage(ChatColor.GOLD + "- Muted: " + ChatColor.RESET + colorizeBool(pmuted));
 				}
-				
+
 				return true;
 			} else {
 				// Abort, too many arguments
@@ -188,20 +188,20 @@ public class CustomWhois extends JavaPlugin implements Listener {
 		}
 		return false;
 	}
-	
+
 	private boolean setupEconomy() {
-        if (getServer().getPluginManager().getPlugin("Vault") == null) {
-            return false;
-        }
-        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
-        if (rsp == null) {
-            return false;
-        }
-        econ = rsp.getProvider();
-        return econ != null;
-    }
-	
-	public String colorizeBool(String bool) { 
+		if (getServer().getPluginManager().getPlugin("Vault") == null) {
+			return false;
+		}
+		RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+		if (rsp == null) {
+			return false;
+		}
+		econ = rsp.getProvider();
+		return econ != null;
+	}
+
+	public String colorizeBool(String bool) {
 		if (bool == "true"){
 			String stringbool = ChatColor.GREEN + "true" + ChatColor.RESET;
 			return stringbool;
